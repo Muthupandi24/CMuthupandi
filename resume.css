@@ -1,0 +1,73 @@
+/* resume.css */
+
+/* General Styles */
+body {
+    background-color: #e0f7fa; /* Light cyan background */
+    color: #333; /* Dark text color */
+    font-family: Arial, sans-serif; /* Font family */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+header {
+    background: #00796b; /* Teal background for header */
+    color: #ffffff; /* White text color */
+    padding: 20px 0; /* Padding for header */
+    text-align: center; /* Center align text */
+}
+
+h2 {
+    color: #00796b; /* Teal color for section headings */
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #004d40; /* Darker teal background for navbar */
+    padding: 10px 0; /* Padding for navbar */
+}
+
+.navbar ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the navbar items */
+}
+
+.navbar ul li {
+    margin: 0 15px; /* Space between navbar items */
+}
+
+.navbar ul li a {
+    color: #ffffff; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text for links */
+    padding: 10px 15px; /* Padding for links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar ul li a:hover {
+    background-color: #ffcc00; /* Change background color on hover to gold */
+    color: #004d40; /* Change text color on hover to dark teal */
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+    background: #ffffff; /* White background for main content */
+    margin: 20px;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Resume Content Styles */
+ul.resume-list {
+    list-style-type: disc; /* Bullet points for resume list */
+    margin-left: 20px; /* Indent lists */
+}
+
+.resume-list li {
+    margin: 10px 0; /* Space between resume items */
+    color: #00796b; /* Teal color for resume items */
+}
