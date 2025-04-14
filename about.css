@@ -1,5 +1,3 @@
-/* about.css */
-
 /* General Styles */
 body {
     background-color: #e8f5e9; /* Light green background */
@@ -31,7 +29,7 @@ h2 {
 
 /* Navigation Bar Styles */
 .navbar {
-    background-color: #4caf50; /* Green background for navbar */
+    background-color: rgba(76, 175, 80, 0.9); /* Semi-transparent background for navbar */
     padding: 15px 0; /* Padding for navbar */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for navbar */
 }
@@ -55,6 +53,7 @@ h2 {
     padding: 10px 20px; /* Padding for links */
     border-radius: 25px; /* Rounded corners */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+    position: relative; /* For pseudo-element positioning */
 }
 
 .navbar ul li a:hover {
@@ -63,7 +62,22 @@ h2 {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-/* Main Content Styles */
+/* Underline effect on hover */
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #ffcc00; /* Gold underline */
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0); /* Initially hidden */
+    transition: transform 0.3s; /* Smooth transition for effect */
+}
+
+.navbar ul li a:hover::after {
+    transform: scaleX(1); /* Show underline on hover */
+}
 main {
     padding: 40px;
     background: #ffffff; /* White background for main content */
@@ -71,6 +85,7 @@ main {
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     max-width: 800px; /* Max width for main content */
+    text-align: center; /* Center align text within main */
 }
 
 /* Colorful Text Styles */
@@ -108,4 +123,22 @@ footer {
     .navbar ul li {
         margin: 0 10px; /* Reduce space between navbar items on mobile */
     }
+
+    main {
+        padding: 20px; /* Less padding for mobile */
+    }
+}
+
+/* Additional Hover Effects for Main Content links */
+main p a {
+    color: #2196f3; /* Link color */
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+main p a:hover {
+    color: #ff4081; /* Change color on hover to pink */
+    text-decoration: underline; /* Underline link on hover */
+}
+li{
+    list-style: none;
 }
