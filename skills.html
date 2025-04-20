@@ -3,12 +3,714 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="skills.css">
     <title>My Skills - C. Muthupandi</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        /* General Styles */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1614850715649-1d0106293bd1?auto=format&fit=crop&q=80&w=1800');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2d3436;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.9), rgba(72, 52, 212, 0.8));
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            padding-bottom: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
+            animation: glowText 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowText {
+            0% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+            100% { text-shadow: 0 0 15px rgba(255,255,255,0.9), 0 0 25px rgba(106, 90, 205, 0.8); }
+        }
+
+        header h1::before, header h1::after {
+            content: '◆';
+            font-size: 0.5em;
+            vertical-align: middle;
+            color: #ff9ff3;
+            margin: 0 15px;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: rgba(10, 189, 227, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 15px 15px;
+            position: relative;
+            z-index: 100;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul li {
+            margin: 5px 10px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .navbar ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ff9ff3;
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 25px;
+            transform: skewX(-15deg);
+        }
+
+        .navbar ul li a:hover::before {
+            width: 110%;
+        }
+
+        .navbar ul li a:hover {
+            color: #48344d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 1200px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #a29bfe, #00cec9, #a29bfe, #00cec9);
+            z-index: -1;
+            border-radius: 25px;
+            background-size: 400%;
+            animation: glowing 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        /* Section Headings */
+        h2 {
+            color: #6c5ce7;
+            font-size: 2.5em;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #a29bfe, #00cec9);
+            border-radius: 2px;
+        }
+
+        /* Skills Table Styles */
+        .skills-container {
+            margin: 40px 0;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .skills-section-title {
+            background: linear-gradient(45deg, #6c5ce7, #00cec9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px 10px 0 0;
+            font-size: 1.5em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-section-title::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-30deg);
+            animation: lightMove 3s infinite;
+        }
+
+        @keyframes lightMove {
+            0% { transform: skewX(-30deg) translateX(-100px); }
+            100% { transform: skewX(-30deg) translateX(300px); }
+        }
+
+        .skills-table, .skills-display-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+            animation: fadeIn 1s ease-out;
+            margin-bottom: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .skills-table thead tr, .skills-display-table thead tr {
+            background: linear-gradient(45deg, rgba(106, 90, 205, 0.8), rgba(10, 189, 227, 0.8));
+            color: white;
+        }
+
+        .skills-table th, .skills-display-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .skills-table td, .skills-display-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .skills-table tr:nth-child(even), .skills-display-table tr:nth-child(even) {
+            background-color: rgba(236, 240, 241, 0.5);
+        }
+
+        .skills-table tr:hover td, .skills-display-table tr:hover td {
+            background-color: rgba(189, 195, 199, 0.2);
+            transform: translateX(5px);
+        }
+
+        .skills-table tbody tr:last-child td, .skills-display-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Proficiency Level Styling */
+        .proficiency {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .beginner {
+            background-color: rgba(255, 234, 167, 0.7);
+            color: #d35400;
+        }
+
+        .intermediate {
+            background-color: rgba(178, 190, 195, 0.7);
+            color: #2c3e50;
+        }
+
+        .advanced {
+            background-color: rgba(126, 214, 223, 0.7);
+            color: #1e3799;
+        }
+
+        .expert {
+            background-color: rgba(120, 224, 143, 0.7);
+            color: #006266;
+        }
+
+        /* Experience Bar Styling */
+        .experience-bar-container {
+            width: 100%;
+            background-color: #f1f2f6;
+            border-radius: 10px;
+            height: 15px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.2) 50%, 
+                rgba(255,255,255,0) 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .years-text {
+            text-align: center;
+            font-weight: 500;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #636e72;
+        }
+
+        /* Skill Cards Section */
+        .skill-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-card-header {
+            background: linear-gradient(45deg, #6c5ce7, #00cec9);
+            color: white;
+            padding: 20px;
+            font-size: 1.4em;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card-header::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -70px;
+            right: -70px;
+        }
+
+        .skill-card-icon {
+            font-size: 2em;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            opacity: 0.7;
+        }
+
+        .skill-card-body {
+            padding: 20px;
+        }
+
+        .skill-card-level {
+            margin: 15px 0;
+        }
+
+        .skill-card-level-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .skill-card-level-bar {
+            height: 10px;
+            background: #f1f2f6;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-card-level-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(to right, #6c5ce7, #00cec9);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card-footer {
+            background: #f7f7f7;
+            padding: 15px 20px;
+            color: #636e72;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+        }
+
+        /* Progress Circles */
+        .progress-circles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .progress-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .progress-circle:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-circle::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            border: 10px solid #f1f2f6;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+        }
+
+        .progress-circle-fill {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #6c5ce7 calc(var(--progress) * 1%), 
+                #f1f2f6 calc(var(--progress) * 1%)
+            );
+            transition: all 1s ease;
+        }
+
+        .progress-circle-inner {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+        .progress-percent {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #6c5ce7;
+        }
+
+        .progress-label {
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #636e72;
+            margin-top: 5px;
+        }
+
+        /* Star Rating */
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        .star {
+            color: #dfe6e9;
+            font-size: 1.2em;
+            margin: 0 2px;
+            transition: all 0.3s ease;
+        }
+
+        .star.filled {
+            color: #fdcb6e;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, rgba(10, 189, 227, 0.9), rgba(106, 90, 205, 0.8));
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            clip-path: polygon(0 15%, 50% 0, 100% 15%, 100% 100%, 0 100%);
+            padding-top: 50px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
+
+        .footer-heading {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            background: rgba(255, 255, 255, 0.2);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: white;
+            color: #6c5ce7;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            margin-top: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header h1::before, header h1::after {
+                margin: 0 8px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 5px 0;
+                width: 80%;
+            }
+
+            .navbar ul li a {
+                display: block;
+                text-align: center;
+            }
+
+            main {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .skill-cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-circles-container {
+                gap: 20px;
+            }
+            
+            .progress-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .progress-circle-fill {
+                width: 100px;
+                height: 100px;
+                top: 10px;
+                left: 10px;
+            }
+            
+            .progress-circle-inner {
+                width: 80px;
+                height: 80px;
+                top: 20px;
+                left: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Skills</h1>
+        <h1>MY SKILLS</h1>
         <nav class="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -22,96 +724,422 @@
             </ul>
         </nav>
     </header>
+    
     <main>
-        <h2>Technical Skills Display</h2>
-        <table class="skills-display-table">
-            <thead>
-                <tr>
-                    <th>Skill</th>
-                    <th>Proficiency Level</th>
-                    <th>Experience (Years)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Python</td>
-                    <td>Advanced</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Java</td>
-                    <td>Intermediate</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>C</td>
-                    <td>Intermediate</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>HTML</td>
-                    <td>Advanced</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>CSS</td>
-                    <td>Advanced</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>JavaScript</td>
-                    <td>Intermediate</td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2>My Skills</h2>
-        <table class="skills-table">
-            <thead>
-                <tr>
-                    <th>Skill</th>
-                    <th>Proficiency Level</th>
-                    <th>Experience (Years)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Volly Ball</td>
-                    <td>Advanced</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Kabadi</td>
-                    <td>Intermediate</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>Carram</td>
-                    <td>Intermediate</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Bus Games</td>
-                    <td>Advanced</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Train Games</td>
-                    <td>Advanced</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>FF</td>
-                    <td>Intermediate</td>
-                    <td>1</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2>My Professional Skills</h2>
         
+        <!-- Sports Skills Section -->
+        <div class="skills-container">
+            <div class="skills-section-title">Sports & Recreation Skills</div>
+            <table class="skills-table">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Proficiency Level</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Volley Ball</td>
+                        <td><span class="proficiency advanced">Advanced</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 66%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">2 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kabaddi</td>
+                        <td><span class="proficiency intermediate">Intermediate</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 80%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">8 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Carrom</td>
+                        <td><span class="proficiency intermediate">Intermediate</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 66%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">2 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bus Games</td>
+                        <td><span class="proficiency advanced">Advanced</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 75%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">3 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Train Games</td>
+                        <td><span class="proficiency advanced">Advanced</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 75%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">3 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Free Fire</td>
+                        <td><span class="proficiency intermediate">Intermediate</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 33%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">1 Year</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         
+        <!-- Technical Skills Section -->
+        <div class="skills-container">
+            <div class="skills-section-title">Technical Skills</div>
+            <table class="skills-display-table">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Proficiency Level</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Python</td>
+                        <td><span class="proficiency advanced">Advanced</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 75%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">3 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td><span class="proficiency intermediate">Intermediate</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 66%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">2 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td><span class="proficiency intermediate">Intermediate</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 33%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">1 Year</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>HTML</td>
+                        <td><span class="proficiency advanced">Advanced</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 100%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">4 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CSS</td>
+                        <td><span class="proficiency advanced">Advanced</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 100%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">4 Years</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td><span class="proficiency intermediate">Intermediate</span></td>
+                        <td>
+                            <div class="experience-bar-container">
+                                <div class="experience-bar" style="width: 66%; background: linear-gradient(to right, #00cec9, #6c5ce7);"></div>
+                            </div>
+                            <div class="years-text">2 Years</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Skill Cards -->
+        <h2>Featured Skills</h2>
+        <div class="skill-cards-container">
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    Web Development
+                    <div class="skill-card-icon">💻</div>
+                </div>
+                <div class="skill-card-body">
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>HTML</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>JavaScript</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-footer">
+                    <div class="star-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    Programming
+                    <div class="skill-card-icon">🔧</div>
+                </div>
+                <div class="skill-card-body">
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>Python</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>Java</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>C</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-footer">
+                    <div class="star-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-card-header">
+                    Sports Skills
+                    <div class="skill-card-icon">🏆</div>
+                </div>
+                <div class="skill-card-body">
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>Volleyball</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>Kabaddi</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card-level">
+                        <div class="skill-card-level-text">
+                            <span>Carrom</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-card-level-bar">
+                            <div class="skill-card-level-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card-footer">
+                    <div class="star-rating">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Progress Circles -->
+        <h2>Key Competencies</h2>
+        <div class="progress-circles-container">
+            <div class="progress-circle">
+                <div class="progress-circle-fill" style="--progress: 90"></div>
+                <div class="progress-circle-inner">
+                    <div class="progress-percent">90%</div>
+                    <div class="progress-label">HTML/CSS</div>
+                </div>
+            </div>
+            
+            <div class="progress-circle">
+                <div class="progress-circle-fill" style="--progress: 85"></div>
+                <div class="progress-circle-inner">
+                    <div class="progress-percent">85%</div>
+                    <div class="progress-label">Python</div>
+                </div>
+            </div>
+            
+            <div class="progress-circle">
+                <div class="progress-circle-fill" style="--progress: 75"></div>
+                <div class="progress-circle-inner">
+                    <div class="progress-percent">75%</div>
+                    <div class="progress-label">Volleyball</div>
+                </div>
+            </div>
+            
+            <div class="progress-circle">
+                <div class="progress-circle-fill" style="--progress: 70"></div>
+                <div class="progress-circle-inner">
+                    <div class="progress-percent">70%</div>
+                    <div class="progress-label">Java</div>
+                </div>
+            </div>
+            
+            <div class="progress-circle">
+                <div class="progress-circle-fill" style="--progress: 65"></div>
+                <div class="progress-circle-inner">
+                    <div class="progress-percent">65%</div>
+                    <div class="progress-label">C</div>
+                </div>
+            </div>
+        </div>
     </main>
+    
     <footer>
-        <p>© 2025 Muthupandi</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Info</h3>
+                <ul class="footer-links">
+                    <li>Email: example@example.com</li>
+                    <li>Phone: +1 234 567 8900</li>
+                    <li>Address: City, Country</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-heading">Follow Me</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">TW</a>
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">LI</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2025 C. Muthupandi. All Rights Reserved.
+        </div>
     </footer>
+    
+    <script>
+        // Animation for experience bars
+        document.addEventListener('DOMContentLoaded', function() {
+            const experienceBars = document.querySelectorAll('.experience-bar');
+            
+            experienceBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+            
+            // Animate progress circles on scroll
+            const progressCircles = document.querySelectorAll('.progress-circle-fill');
+            
+            function animateProgressCircles() {
+                progressCircles.forEach(circle => {
+                    const rect = circle.getBoundingClientRect();
+                    const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+                    
+                    if (isVisible) {
+                        const progress = circle.style.getPropertyValue('--progress');
+                        circle.style.setProperty('--progress', 0);
+                        
+                        setTimeout(() => {
+                            circle.style.setProperty('--progress', progress);
+                        }, 300);
+                    }
+                });
+            }
+            
+            // Initial animation
+            animateProgressCircles();
+            
+            // Animate on scroll
+            window.addEventListener('scroll', animateProgressCircles);
+        });
+    </script>
 </body>
 </html>
