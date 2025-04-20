@@ -3,16 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
     <title>Muthupandi's Portfolio</title>
-</head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muthupandi's Portfolio</title>
-    <link rel="stylesheet" href="profile.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        /* General Styles */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1614850715649-1d0106293bd1?auto=format&fit=crop&q=80&w=1800');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2d3436;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.9), rgba(72, 52, 212, 0.8));
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            padding-bottom: 70px;
+        }
+
+        .title {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::before, .title::after {
+            content: '◆';
+            font-size: 0.5em;
+            vertical-align: middle;
+            color: #ff9ff3;
+            margin: 0 15px;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: rgba(10, 189, 227, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul li {
+            margin: 5px 10px;
+        }
+
+        .navbar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .navbar ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ff9ff3;
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 25px;
+        }
+
+        .navbar ul li a:hover::before {
+            width: 100%;
+        }
+
+        .navbar ul li a:hover {
+            color: #48344d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 900px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #a29bfe, #00cec9, #a29bfe, #00cec9);
+            z-index: -1;
+            border-radius: 25px;
+            background-size: 400%;
+            animation: glowing 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+
+        .welcome {
+            border-left-color: #a29bfe;
+        }
+
+        .skills {
+            border-left-color: #00cec9;
+        }
+
+        .projects {
+            border-left-color: #ff9ff3;
+        }
+
+        .education {
+            border-left-color: #fdcb6e;
+        }
+
+        section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Heading Styles */
+        h2 {
+            color: #6c5ce7;
+            font-size: 2em;
+            margin: 0 0 25px 0;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #a29bfe, #00cec9);
+            border-radius: 2px;
+        }
+
+        /* Special Text Styles */
+        .name {
+            color: #00cec9;
+            font-weight: 700;
+            font-size: 1.3em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            display: inline-block;
+            padding: 3px 10px;
+            background: linear-gradient(to right, rgba(106, 90, 205, 0.2), rgba(10, 189, 227, 0.2));
+            border-radius: 4px;
+            font-weight: 600;
+            color: #6c5ce7;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .highlight:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* List Styles */
+        .purpose-list, .skills-list, .interests-list, .projects-list, .education-list {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        .purpose-list li, .skills-list li, .interests-list li, .education-list li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 30px;
+            transition: transform 0.2s;
+        }
+
+        .purpose-list li:hover, .skills-list li:hover, .interests-list li:hover, .education-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .purpose-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #a29bfe;
+            font-weight: bold;
+            background: rgba(162, 155, 254, 0.2);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .skills-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: #00cec9;
+            font-weight: bold;
+            background: rgba(0, 206, 201, 0.2);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .interests-list li::before {
+            content: '❤';
+            position: absolute;
+            left: 0;
+            color: #ff9ff3;
+            font-weight: bold;
+            background: rgba(255, 159, 243, 0.2);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .education-list li::before {
+            content: '🎓';
+            position: absolute;
+            left: 0;
+            color: #fdcb6e;
+            font-weight: bold;
+            background: rgba(253, 203, 110, 0.2);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .projects-list li {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #ff9ff3;
+        }
+        
+        .projects-list li:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .projects-list li a {
+            color: #6c5ce7;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            display: inline-block;
+        }
+
+        .projects-list li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #a29bfe, #00cec9);
+            transition: width 0.3s ease;
+        }
+
+        .projects-list li a:hover {
+            color: #00cec9;
+        }
+
+        .projects-list li a:hover::after {
+            width: 100%;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(246, 246, 246, 0.9));
+            border-radius: 15px;
+            padding: 35px;
+            position: relative;
+        }
+
+        .welcome p {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Skills Section Extra Styling */
+        .skills {
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(246, 246, 246, 0.9));
+            position: relative;
+        }
+
+        .skills::before, .education::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 206, 201, 0.1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: 0;
+        }
+
+        .education::before {
+            background: rgba(253, 203, 110, 0.1);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, rgba(10, 189, 227, 0.9), rgba(106, 90, 205, 0.8));
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            clip-path: polygon(0 15%, 50% 0, 100% 15%, 100% 100%, 0 100%);
+            padding-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Social Media Icons (placeholders) */
+        .social-icons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Animation for welcome text */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Skill bars */
+        .skill-bar {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(to right, #a29bfe, #00cec9);
+            position: relative;
+            animation: progressAnimation 1.5s ease-in-out;
+        }
+
+        .python { width: 90%; }
+        .c { width: 85%; }
+        .java { width: 80%; }
+        .data-science { width: 75%; }
+        .html { width: 95%; }
+        .css { width: 90%; }
+        .js { width: 85%; }
+
+        @keyframes progressAnimation {
+            from { width: 0; }
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5em;
+            }
+
+            .title::before, .title::after {
+                margin: 0 8px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 5px 0;
+                width: 80%;
+            }
+
+            .navbar ul li a {
+                display: block;
+                text-align: center;
+            }
+
+            main {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -47,15 +542,77 @@
         <section class="skills">
             <h2>Key Skills</h2>
             <p>I have learned:</p>
-            <ul class="skills-list">
-                <li>Python</li>
-                <li>Programming in C</li>
-                <li>Java</li>
-                <li>Data Science</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-            </ul>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Python</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress python"></div>
+                </div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Programming in C</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress c"></div>
+                </div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Java</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress java"></div>
+                </div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Data Science</span>
+                    <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress data-science"></div>
+                </div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>HTML</span>
+                    <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress html"></div>
+                </div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>CSS</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress css"></div>
+                </div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>JavaScript</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress js"></div>
+                </div>
+            </div>
+            
             <p>My interests include:</p>
             <ul class="interests-list">
                 <li>Software Development</li>
@@ -84,7 +641,34 @@
     </main>
     
     <footer>
-        <p>© 2025  Muthupandi</p>
+        <p>© 2025 Muthupandi</p>
+        <div class="social-icons">
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
