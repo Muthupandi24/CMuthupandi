@@ -3,12 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="contact.css">
-    <title>Contact Me - C. Muthupandi</title>
+    <title>Contact Me - Muthupandi</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        /* General Styles */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1614850715649-1d0106293bd1?auto=format&fit=crop&q=80&w=1800');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2d3436;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.9), rgba(72, 52, 212, 0.8));
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            padding-bottom: 70px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        header h1::before, header h1::after {
+            content: '◆';
+            font-size: 0.5em;
+            vertical-align: middle;
+            color: #ff9ff3;
+            margin: 0 15px;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: rgba(10, 189, 227, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul li {
+            margin: 5px 10px;
+        }
+
+        .navbar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .navbar ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ff9ff3;
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 25px;
+        }
+
+        .navbar ul li a:hover::before {
+            width: 100%;
+        }
+
+        .navbar ul li a:hover {
+            color: #48344d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #a29bfe, #00cec9, #a29bfe, #00cec9);
+            z-index: -1;
+            border-radius: 25px;
+            background-size: 400%;
+            animation: glowing 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        /* Heading Styles */
+        h2 {
+            color: #6c5ce7;
+            font-size: 2em;
+            margin: 0 0 25px 0;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #a29bfe, #00cec9);
+            border-radius: 2px;
+        }
+
+        /* Contact Form Styles */
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #a29bfe;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        #contact-form:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        #contact-form label {
+            font-weight: 600;
+            color: #6c5ce7;
+            margin-bottom: -10px;
+            display: block;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            padding: 12px 15px;
+            border: 2px solid rgba(162, 155, 254, 0.3);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        #contact-form input:focus,
+        #contact-form textarea:focus {
+            outline: none;
+            border-color: #a29bfe;
+            box-shadow: 0 0 8px rgba(162, 155, 254, 0.5);
+            background-color: white;
+        }
+
+        #contact-form button {
+            background: linear-gradient(135deg, #a29bfe, #00cec9);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        #contact-form button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255, 159, 243, 0.8);
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 30px;
+        }
+
+        #contact-form button:hover::before {
+            width: 100%;
+        }
+
+        #contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: #48344d;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #00cec9;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info h3 {
+            color: #00cec9;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 0;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #00cec9, #a29bfe);
+            border-radius: 2px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 206, 201, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00cec9;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #007bff;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            overflow: hidden;
+            border: 4px solid #007bff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #007bff;
+        }
+
+        .profile-details {
+            flex: 1;
+        }
+
+        .profile-details h3 {
+            color: #007bff;
+            margin-top: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .profile-details p {
+            margin: 5px 0;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+
+        /* Social Media Icons */
+        .social-media {
+            margin-top: 25px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(162, 155, 254, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            color: #6c5ce7;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: #a29bfe;
+            color: white;
+        }
+
+        /* Map Section */
+        .map-container {
+            margin-top: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, rgba(10, 189, 227, 0.9), rgba(106, 90, 205, 0.8));
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            clip-path: polygon(0 15%, 50% 0, 100% 15%, 100% 100%, 0 100%);
+            padding-top: 50px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #007bff;
+            font-size: 2em;
+            margin: 0 0 25px 0;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            border-radius: 2px;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header h1::before, header h1::after {
+                margin: 0 8px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 5px 0;
+                width: 80%;
+            }
+
+            .navbar ul li a {
+                display: block;
+                text-align: center;
+            }
+
+            main {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            #contact-form,
+            .contact-info {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Contact Me</h1>
+        <h1>CONTACT ME</h1>
         <nav class="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -22,35 +523,257 @@
             </ul>
         </nav>
     </header>
+    
     <main>
+        <h2>Profile Information</h2>
+        
+        <div class="profile-card fade-in">
+            <div class="profile-image">
+                <span>CM</span>
+            </div>
+            <div class="profile-details">
+                <h3>C. Muthupandi</h3>
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <line x1="20" y1="8" x2="20" y2="14"></line>
+                            <line x1="23" y1="11" x2="17" y2="11"></line>
+                        </svg>
+                    </div>
+                    <span>Registration No: 953723205024</span>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <span>B. Tech. Information Technology | 2023-2027</span>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <span>DOB: 20/10/2005</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="college-banner fade-in">
+            <h4>AAA College of Engineering and Technology</h4>
+            <p>Fourth Semester - B. Tech Information Technology</p>
+        </div>
+        
         <h2>Get in Touch</h2>
-        <form id="contact-form" action="https://formspree.io/f/xpwpgblq" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+        <p class="fade-in" style="text-align: center; margin-bottom: 30px;">Want to collaborate, have a question, or just want to say hello? Feel free to reach out!</p>
+        
+        <form id="contact-form" action="https://formspree.io/f/xpwpgblq" method="post" class="fade-in">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
             
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
             
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
             
-            <button type="submit">Send Message</button>
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            
+            <button type="submit" class="pulse">Send Message</button>
         </form>
-        <section>
-            <h2>Social Media</h2>
-            <ul>
-                <li><a href="https://www.instagram.com/muthu_pandi_0024?igsh=Z2oxaGtsNHNxeHVq">Instagram</a></li>
-                <li><a href="https://www.facebook.com/share/18zrhXcweM/">Facebook</a></li>
-                <li><a href="https://x.com/MUTHUPA02623470?s=09">Twitter</a></li>
-                <li><a href="https://github.com/Muthupandi24">Github</a></li>
-                <li><a href="https://www.linkedin.com/in/muthu-pandi-c-152216310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Linked in</a></li>
-                <li><a href="https://www.sololearn.com/profile/31024759/?ref=app">Solo Learn</a></li>
-            </ul>
+        
+        <section class="contact-info fade-in">
+            <h3>Contact Information</h3>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <p>+91 8015899931</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <p>muthupandi@example.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <p>173, Pandiyan Nagar 2nd Street, Thiruthangal - 626130</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="contact-text">
+                        <p>Parent Contact: Sasikala - 9585148632</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-media">
+                <h3>Follow Me</h3>
+                <div class="social-icons">
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </div>
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </div>
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </section>
+        
+        <div class="map-container fade-in">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3937.7677452527776!2d77.73389777500532!3d9.273486489625166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06889edd51151f%3A0x5f3343abefa2da0c!2sPandiyan%20Nagar%2C%20Thiruthangal%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1713778241212!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        </div>
     </main>
+    
     <footer>
-        <p>&copy; 2025 C. Muthupandi</p>
+        <p>© 2025 Muthupandi</p>
+        <div class="social-icons">
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+            </div>
+        </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        // Add fade-in animation to elements as they appear in the viewport
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            
+            // Form validation and submission handling
+            form.addEventListener('submit', function(event) {
+                const nameInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                const messageInput = document.getElementById('message');
+                
+                let isValid = true;
+                
+                if (nameInput.value.trim() === '') {
+                    isValid = false;
+                    highlightError(nameInput);
+                } else {
+                    removeError(nameInput);
+                }
+                
+                if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
+                    isValid = false;
+                    highlightError(emailInput);
+                } else {
+                    removeError(emailInput);
+                }
+                
+                if (messageInput.value.trim() === '') {
+                    isValid = false;
+                    highlightError(messageInput);
+                } else {
+                    removeError(messageInput);
+                }
+                
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+            
+            // Email validation function
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Highlight error on form field
+            function highlightError(input) {
+                input.style.borderColor = '#e74c3c';
+                input.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
+            }
+            
+            // Remove error highlight
+            function removeError(input) {
+                input.style.borderColor = 'rgba(162, 155, 254, 0.3)';
+                input.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+            }
+            
+            // Reset error styles on input
+            const inputs = document.querySelectorAll('#contact-form input, #contact-form textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    removeError(this);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
