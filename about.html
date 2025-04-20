@@ -3,12 +3,568 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <link rel="stylesheet" href="about.css">
+    <title>About Me - Muthupandi</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        /* General Styles */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1614850715649-1d0106293bd1?auto=format&fit=crop&q=80&w=1800');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #2d3436;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.9), rgba(72, 52, 212, 0.8));
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            padding-bottom: 70px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 5px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        header h1::before, header h1::after {
+            content: '◆';
+            font-size: 0.5em;
+            vertical-align: middle;
+            color: #ff9ff3;
+            margin: 0 15px;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: rgba(10, 189, 227, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar ul li {
+            margin: 5px 10px;
+        }
+
+        .navbar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .navbar ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #ff9ff3;
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 25px;
+        }
+
+        .navbar ul li a:hover::before {
+            width: 100%;
+        }
+
+        .navbar ul li a:hover {
+            color: #48344d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 900px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #a29bfe, #00cec9, #a29bfe, #00cec9);
+            z-index: -1;
+            border-radius: 25px;
+            background-size: 400%;
+            animation: glowing 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .bio {
+            border-left: 5px solid #a29bfe;
+            text-align: center;
+        }
+
+        .education {
+            border-left: 5px solid #00cec9;
+        }
+
+        .projects {
+            border-left: 5px solid #ff9ff3;
+        }
+
+        .hobbies {
+            border-left: 5px solid #fdcb6e;
+        }
+
+        .personal-info {
+            border-left: 5px solid #55efc4;
+        }
+
+        /* Heading Styles */
+        h2 {
+            color: #6c5ce7;
+            font-size: 2em;
+            margin: 0 0 25px 0;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #a29bfe, #00cec9);
+            border-radius: 2px;
+        }
+
+        /* List Styles */
+        .custom-list {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        .custom-list li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 30px;
+            transition: transform 0.2s;
+        }
+
+        .custom-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .education-list li::before {
+            content: '🎓';
+            position: absolute;
+            left: 0;
+            color: #00cec9;
+            font-weight: bold;
+            background: rgba(0, 206, 201, 0.2);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .projects-list li::before {
+            content: '🚀';
+            position: absolute;
+            left: 0;
+            color: #ff9ff3;
+            font-weight: bold;
+            background: rgba(255, 159, 243, 0.2);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .hobbies-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: #fdcb6e;
+            font-weight: bold;
+            background: rgba(253, 203, 110, 0.2);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* Profile Photo */
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 20px;
+            display: block;
+            background-color: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-photo::before {
+            content: "👨‍💻";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+        }
+
+        /* Personal Info Styles */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .info-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .info-item strong {
+            color: #6c5ce7;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .info-item a {
+            color: #00cec9;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .info-item a:hover {
+            color: #6c5ce7;
+            text-decoration: underline;
+        }
+
+        /* Timeline for Education */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: rgba(0, 206, 201, 0.3);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-container.left {
+            left: 0;
+        }
+
+        .timeline-container.right {
+            left: 50%;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid #00cec9;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-container.right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: #6c5ce7;
+            margin-top: 0;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #00cec9;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 0 6px 0 10px;
+            font-weight: bold;
+        }
+
+        /* Animation for sections */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Skill bars (optional for about page) */
+        .skills-container {
+            margin-top: 20px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(to right, #a29bfe, #00cec9);
+            position: relative;
+            animation: progressAnimation 1.5s ease-in-out;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        @keyframes progressAnimation {
+            from { width: 0; }
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, rgba(10, 189, 227, 0.9), rgba(106, 90, 205, 0.8));
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            clip-path: polygon(0 15%, 50% 0, 100% 15%, 100% 100%, 0 100%);
+            padding-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header h1::before, header h1::after {
+                margin: 0 8px;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar ul li {
+                margin: 5px 0;
+                width: 80%;
+            }
+
+            .navbar ul li a {
+                display: block;
+                text-align: center;
+            }
+
+            main {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container.left {
+                left: 0%;
+            }
+            
+            .timeline-container.right {
+                left: 0%;
+            }
+            
+            .timeline-container.right::after, .timeline-container.left::after {
+                left: 15px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>About Me</h1>
+        <h1>ABOUT ME</h1>
         <nav class="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -22,47 +578,180 @@
             </ul>
         </nav>
     </header>
+    
     <main>
-        <h2>Hi! I'm C. Muthupandi</h2>
-        <p>I am an IT student from AAA Engineering College in Amathur, Sivakasi. I am currently in my second year of studies.</p>
+        <section class="section bio">
+            <div class="profile-photo">
+                <!-- Replace with your actual image if available -->
+                <!-- <img src="your-photo.jpg" alt="Muthupandi"> -->
+            </div>
+            <h2>Hi! I'm C. Muthupandi</h2>
+            <p>I am an <span class="highlight" style="display: inline-block; padding: 3px 10px; background: linear-gradient(to right, rgba(106, 90, 205, 0.2), rgba(10, 189, 227, 0.2)); border-radius: 4px; font-weight: 600; color: #6c5ce7;">IT student</span> from AAA Engineering College in Amathur, Sivakasi. I am currently in my second year of studies, passionate about technology and innovation. I believe in continuous learning and applying knowledge to solve real-world problems.</p>
+            <p>My journey in technology began with curiosity about how things work, which evolved into a passion for creating solutions through programming and development. I am constantly exploring new technologies and expanding my skill set.</p>
+        </section>
         
-        <h2>Education and Training</h2>
-        <p>I am participating in various skill development programs, including:</p>
-        <ul>
-            <li>JCI Skill Development Program</li>
-            <li>Internet of Things (IoT)</li>
-            <li>E-Yentra</li>
-            <li>Generative AI Workshop</li>
-        </ul>
-
-        <h2>Projects</h2>
-        <p>I've worked on several projects that showcase my skills:</p>
-        <ul>
-            <li>Smart Home Automation using IoT</li>
-            <li>Chatbot using Generative AI</li>
-            <li>Personal Portfolio Website</li>
-            <li>Data Visualization Dashboard</li>
-        </ul>
-
-        <h2>Hobbies and Interests</h2>
-        <p>In my free time, I enjoy:</p>
-        <ul>
-            <li>Coding and exploring new technologies</li>
-            <li>Playing cricket with friends</li>
-            <li>Reading books on science fiction and technology</li>
-            <li>Traveling to new places</li>
-        </ul>
-
-        <h2>Personal Information</h2>
-        <p><strong>Name:</strong> Muthupandi</p>
-        <p><strong>Date of Birth:</strong> 20-10-2005</p>
-        <p><strong>Age:</strong> 19</p>
-        <p><strong>Native:</strong> Thiruthangal</p>
-        <p><strong>Email:</strong> <a href="mailto:23urit024@aaacet.ac.in">23urit024@aaacet.ac.in</a></p>
-        <p><strong>Mobile Number:</strong> 8015899931</p>
+        <section class="section education">
+            <h2>Education and Training</h2>
+            <div class="timeline">
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023-2027</div>
+                        <h3>Bachelor of Technology in Information Technology</h3>
+                        <p>AAA College of Engineering and Technology, Amathur, Sivakasi</p>
+                        <p>Currently in Second Year with focus on programming fundamentals, data structures, algorithms, and web development.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>I am enhancing my skills through participation in various development programs:</p>
+            <ul class="custom-list education-list">
+                <li><strong>JCI Skill Development Program</strong> - Learning professional skills and leadership abilities</li>
+                <li><strong>Internet of Things (IoT)</strong> - Studying connected devices and smart systems</li>
+                <li><strong>E-Yentra</strong> - Robotics training and competition platform</li>
+                <li><strong>Generative AI Workshop</strong> - Exploring machine learning and AI content generation</li>
+            </ul>
+            
+            <div class="skills-container">
+                <h3 style="text-align: center; color: #00cec9;">Skills Being Developed</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Problem Solving</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Team Collaboration</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Technical Communication</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section projects">
+            <h2>Projects</h2>
+            <p>I've worked on several projects that showcase my technical skills and problem-solving abilities:</p>
+            <ul class="custom-list projects-list">
+                <li>
+                    <strong>Smart Home Automation using IoT</strong>
+                    <p>Created a system to control home appliances remotely using sensors and microcontrollers. Implemented mobile app interface for user control.</p>
+                </li>
+                <li>
+                    <strong>Chatbot using Generative AI</strong>
+                    <p>Developed an AI-powered chatbot that can answer questions and provide assistance on specific topics using modern language models.</p>
+                </li>
+                <li>
+                    <strong>Personal Portfolio Website</strong>
+                    <p>Designed and developed a responsive personal website to showcase my skills, projects, and achievements using HTML, CSS, and JavaScript.</p>
+                </li>
+                <li>
+                    <strong>Data Visualization Dashboard</strong>
+                    <p>Created an interactive dashboard to visualize complex data sets, making information more accessible and understandable.</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section hobbies">
+            <h2>Hobbies and Interests</h2>
+            <p>Beyond academics and professional development, I enjoy various activities that help me maintain balance and creativity:</p>
+            <ul class="custom-list hobbies-list">
+                <li>
+                    <strong>Coding and Exploring New Technologies</strong>
+                    <p>I enjoy working on side projects and learning about emerging tech trends in my spare time.</p>
+                </li>
+                <li>
+                    <strong>Playing Cricket with Friends</strong>
+                    <p>Cricket helps me stay physically active and develop teamwork skills.</p>
+                </li>
+                <li>
+                    <strong>Reading Books</strong>
+                    <p>I'm passionate about science fiction and technology books that expand my imagination and knowledge.</p>
+                </li>
+                <li>
+                    <strong>Traveling</strong>
+                    <p>Exploring new places helps me gain perspective and appreciate diverse cultures.</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="section personal-info">
+            <h2>Personal Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Full Name</strong>
+                    C. Muthupandi
+                </div>
+                <div class="info-item">
+                    <strong>Date of Birth</strong>
+                    20-10-2005
+                </div>
+                <div class="info-item">
+                    <strong>Age</strong>
+                    19
+                </div>
+                <div class="info-item">
+                    <strong>Native</strong>
+                    Thiruthangal
+                </div>
+                <div class="info-item">
+                    <strong>Email</strong>
+                    <a href="mailto:23urit024@aaacet.ac.in">23urit024@aaacet.ac.in</a>
+                </div>
+                <div class="info-item">
+                    <strong>Mobile Number</strong>
+                    8015899931
+                </div>
+            </div>
+        </section>
     </main>
+    
     <footer>
         <p>© 2025 Muthupandi</p>
+        <div class="social-icons">
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </div>
+            <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
